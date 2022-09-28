@@ -43,6 +43,9 @@ dependencies:
   persistent_bottom_nav_bar: ^4.0.2
   get: ^4.6.5
   get_storage: ^2.0.3
+  auto_size_text: ^3.0.0 
+  font_awesome_flutter: ^10.2.1
+  
 
 dev_dependencies:
   flutter_test:

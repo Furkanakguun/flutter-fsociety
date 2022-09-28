@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:runaway/app/features/feed/view/feed.dart';
 import 'package:runaway/app/features/profile/view/profile.dart';
-
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -17,7 +17,8 @@ class HomePage extends StatelessWidget {
       screens: _buildScreens(),
       items: _navBarsItems(),
       confineInSafeArea: true,
-      backgroundColor: Color.fromARGB(255, 236, 218, 218), // Default is Colors.white.
+      backgroundColor:
+          Color.fromARGB(255, 0, 0, 0), // Default is Colors.white.
       handleAndroidBackButtonPress: true, // Default is true.
       resizeToAvoidBottomInset:
           true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
@@ -41,8 +42,9 @@ class HomePage extends StatelessWidget {
         curve: Curves.ease,
         duration: Duration(milliseconds: 200),
       ),
+      
       navBarStyle:
-          NavBarStyle.style6, // Choose the nav bar style with this property.
+          NavBarStyle.style12, // Choose the nav bar style with this property.
     );
   }
 }
@@ -54,15 +56,15 @@ List<Widget> _buildScreens() {
 List<PersistentBottomNavBarItem> _navBarsItems() {
   return [
     PersistentBottomNavBarItem(
-      icon: Icon(Icons.car_crash),
-      title: ("Feed"),
-      activeColorPrimary: CupertinoColors.systemPink,
+      icon: Icon(FontAwesomeIcons.map),
+      title: ("Map"),
+      activeColorPrimary: Color.fromARGB(255, 255, 255, 255),
       inactiveColorPrimary: CupertinoColors.systemGrey,
     ),
     PersistentBottomNavBarItem(
       icon: Icon(CupertinoIcons.profile_circled),
       title: ("Profile"),
-      activeColorPrimary: CupertinoColors.systemPink,
+      activeColorPrimary: Color.fromARGB(255, 255, 255, 255),
       inactiveColorPrimary: CupertinoColors.systemGrey,
     ),
   ];

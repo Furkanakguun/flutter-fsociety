@@ -1,435 +1,559 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:runaway/app/classes/fadeanimation.dart';
-import 'package:runaway/app/classes/hex_color.dart';
-import 'package:runaway/app/consts/textconstant.dart';
-import 'package:runaway/app/features/login/view/login.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import '../../../consts/textconstant.dart';
 
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({Key? key}) : super(key: key);
 
-enum FormData { Name, Phone, Email, Gender, password, ConfirmPassword }
-
-class SignupScreen extends StatefulWidget {
   @override
-  State<SignupScreen> createState() => _SignupScreenState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _SignupScreenState extends State<SignupScreen> {
-  Color enabled = Color.fromARGB(255, 63, 56, 89);
-  Color enabledtxt = Colors.white;
-  Color deaible = Colors.grey;
-  Color backgroundColor = const Color(0xFF1F1A30);
-  bool ispasswordev = true;
+class _SignUpPageState extends State<SignUpPage> {
+  late TextEditingController emailController = TextEditingController();
+  late TextEditingController passwordController = TextEditingController();
+  late TextEditingController passwordChechController = TextEditingController();
+  late TextEditingController fullNameController = TextEditingController();
+  late TextEditingController dateOfBirthController = TextEditingController();
+  late TextEditingController instagramController = TextEditingController();
+  DateTime selectedDate = DateTime.now();
 
-  FormData? selected;
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(1900, 8),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate)
+      setState(() {
+        selectedDate = picked;
+      });
+  }
 
-  TextEditingController nameController = new TextEditingController();
-  TextEditingController phoneController = new TextEditingController();
-  TextEditingController emailController = new TextEditingController();
-  TextEditingController passwordController = new TextEditingController();
-  TextEditingController confirmPasswordController = new TextEditingController();
+  void showIosDatePicker(BuildContext context) {
+    showCupertinoModalPopup(
+        context: context,
+        builder: (_) => Container(
+              height: 190,
+              color: Color.fromARGB(255, 255, 255, 255),
+              child: Column(
+                children: [
+                  Container(
+                    height: 180,
+                    child: CupertinoDatePicker(
+                        mode: CupertinoDatePickerMode.date,
+                        initialDateTime: DateTime.now(),
+                        onDateTimeChanged: (val) {
+                          setState(() {
+                            selectedDate = val;
+                          });
+                          // _dateController.text = _dateFormatter.format(val);
+                        }),
+                  ),
+                ],
+              ),
+            ));
+  }
 
   @override
   Widget build(BuildContext context) {
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Container(
+      backgroundColor: Color.fromRGBO(216, 250, 8, 1),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.black,
+      // ),
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Container(
+            margin: EdgeInsets.all(12),
+            child: ListView(children: [
+              Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  "Let's get you in",
+                  style: subheaderStyle,
+                ),
+                Text(
+                  "We need some information",
+                  style: pageNormalStyleGrey,
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                emailField(),
+                passwordField(),
+                passwordCheckField(),
+                fullNameField(),
+                birthDateField(),
+                // instagramField(),
+                CheckboxListTile(
+                  value: false,
+                  onChanged: null,
+                  title: AutoSizeText(
+                    "I agree the Terms Of Policy of terms ı accept every line oc policy agreement about bla bla paper and everytrhin they wanted to be",
+                    maxLines: 3,
+                    style: pageNormalStyleGrey,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    // _showIOS_DatePicker(context);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 12, horizontal: 35),
+                    child: Container(
+                      width: w,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.blueGrey.withOpacity(0.5),
+                              spreadRadius: 1,
+                              blurRadius: 1,
+                              offset:
+                                  Offset(0, 1), // changes position of shadow
+                            ),
+                          ],
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          //    gradient: const LinearGradient(colors: [
+                          //   Color.fromARGB(255, 90, 8, 83),
+                          //   Color.fromARGB(255, 41, 18, 122)
+                          // ]),
+                          borderRadius: BorderRadius.circular(30)),
+                      child: Center(
+                        child: Text(
+                          "Sign Up",
+                          style: pageNormalStyle,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ]),
+            ])),
+      ),
+    );
+  }
+
+  handleSignUp() {
+    // AuthController.instance
+    //     .register(emailController.text.trim(), passwordController.text.trim());
+  }
+
+  Padding instagramField() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            stops: [0.1, 0.4, 0.7, 0.9],
-            colors: [
-              HexColor("#feb616").withOpacity(0.9),
-              HexColor("#f78d1f"),
-              HexColor("#000000"),
-              HexColor("#000000")
-            ],
-          ),
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(
-                HexColor("#fff").withOpacity(0.2), BlendMode.dstATop),
-            image:  AssetImage(
-              'assets/images/car-back-4.jpg',
-            ),
+          gradient: const LinearGradient(colors: [
+            Color.fromARGB(255, 10, 66, 99),
+            // Color.fromARGB(255, 10, 66, 99),
+            Color.fromARGB(255, 90, 4, 54),
+          ]),
+          borderRadius: BorderRadius.circular(30),
+        ),
+        child: TextField(
+          cursorColor: Colors.white,
+          controller: instagramController,
+          decoration: InputDecoration(
+              hintText: "Instagram",
+              hintStyle: TextStyle(color: Colors.grey),
+              prefixIcon: Icon(
+                FontAwesomeIcons.instagram,
+                color: Colors.white54,
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent, width: 1),
+                  borderRadius: BorderRadius.circular(30)),
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent, width: 1),
+                  borderRadius: BorderRadius.circular(30)),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+        ),
+      ),
+    );
+  }
+
+  Padding birthDateField() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+                    // gradient: const LinearGradient(colors: [
+                    //   Color.fromARGB(255, 10, 66, 99),
+                    //   // Color.fromARGB(255, 10, 66, 99),
+                    //   Color.fromARGB(255, 90, 4, 54),
+                    // ]),
+                    borderRadius: BorderRadius.circular(30),
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 2,
+                    ),
+        ),
+        child: TextField(
+          onTap: () {
+            showIosDatePicker(context);
+          },
+          readOnly: true,
+          cursorColor: Colors.black,
+          controller: dateOfBirthController,
+          decoration: InputDecoration(
+              hintText: "Birth Date",
+              hintStyle: TextStyle(color: Colors.grey),
+              prefixIcon: Icon(
+                Icons.date_range,
+                color: Colors.black,
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent, width: 1),
+                  borderRadius: BorderRadius.circular(30)),
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent, width: 1),
+                  borderRadius: BorderRadius.circular(30)),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+        ),
+      ),
+    );
+  }
+
+  Padding fullNameField() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          // gradient: const LinearGradient(colors: [
+          //   Color.fromARGB(255, 10, 66, 99),
+          //   // Color.fromARGB(255, 10, 66, 99),
+          //   Color.fromARGB(255, 90, 4, 54),
+          // ]),
+          borderRadius: BorderRadius.circular(30),
+          border: Border.all(
+            color: Colors.black,
+            width: 2,
           ),
         ),
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Card(
-                  elevation: 5,
-                  color: Colors.transparent.withOpacity(0.4),
-                  child: Container(
-                    width: 400,
-                    padding: EdgeInsets.all(40.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        // FadeAnimation(
-                        //   delay: 0.8,
-                        //   child: Image.network(
-                        //     "https://cdni.iconscout.com/illustration/premium/thumb/job-starting-date-2537382-2146478.png",
-                        //     width: 100,
-                        //     height: 100,
-                        //   ),
-                        // ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        FadeAnimation(
-                          delay: 1,
-                          child: Container(
-                            child: Text(
-                              "Create your account",
-                              style: pageNormalStyleBig,
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        FadeAnimation(
-                          delay: 1,
-                          child: Container(
-                            width: 300,
-                            height: 40,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.0),
-                              color: selected == FormData.Email
-                                  ? enabled
-                                  : backgroundColor,
-                            ),
-                            padding: const EdgeInsets.all(5.0),
-                            child: TextField(
-                              controller: nameController,
-                              onTap: () {
-                                setState(() {
-                                  selected = FormData.Name;
-                                });
-                              },
-                              decoration: InputDecoration(
-                                enabledBorder: InputBorder.none,
-                                border: InputBorder.none,
-                                prefixIcon: Icon(
-                                  Icons.title,
-                                  color: selected == FormData.Name
-                                      ? enabledtxt
-                                      : deaible,
-                                  size: 20,
-                                ),
-                                hintText: 'Full Name',
-                                hintStyle: TextStyle(
-                                    color: selected == FormData.Name
-                                        ? enabledtxt
-                                        : deaible,
-                                    fontSize: 12),
-                              ),
-                              textAlignVertical: TextAlignVertical.center,
-                              style: TextStyle(
-                                  color: selected == FormData.Name
-                                      ? enabledtxt
-                                      : deaible,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        FadeAnimation(
-                          delay: 1,
-                          child: Container(
-                            width: 300,
-                            height: 40,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.0),
-                              color: selected == FormData.Phone
-                                  ? enabled
-                                  : backgroundColor,
-                            ),
-                            padding: const EdgeInsets.all(5.0),
-                            child: TextField(
-                              controller: phoneController,
-                              onTap: () {
-                                setState(() {
-                                  selected = FormData.Phone;
-                                });
-                              },
-                              decoration: InputDecoration(
-                                enabledBorder: InputBorder.none,
-                                border: InputBorder.none,
-                                prefixIcon: Icon(
-                                  Icons.phone_android_rounded,
-                                  color: selected == FormData.Phone
-                                      ? enabledtxt
-                                      : deaible,
-                                  size: 20,
-                                ),
-                                hintText: 'Phone Number',
-                                hintStyle: TextStyle(
-                                    color: selected == FormData.Phone
-                                        ? enabledtxt
-                                        : deaible,
-                                    fontSize: 12),
-                              ),
-                              textAlignVertical: TextAlignVertical.center,
-                              style: TextStyle(
-                                  color: selected == FormData.Phone
-                                      ? enabledtxt
-                                      : deaible,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        FadeAnimation(
-                          delay: 1,
-                          child: Container(
-                            width: 300,
-                            height: 40,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.0),
-                              color: selected == FormData.Email
-                                  ? enabled
-                                  : backgroundColor,
-                            ),
-                            padding: const EdgeInsets.all(5.0),
-                            child: TextField(
-                              controller: emailController,
-                              onTap: () {
-                                setState(() {
-                                  selected = FormData.Email;
-                                });
-                              },
-                              decoration: InputDecoration(
-                                enabledBorder: InputBorder.none,
-                                border: InputBorder.none,
-                                prefixIcon: Icon(
-                                  Icons.email_outlined,
-                                  color: selected == FormData.Email
-                                      ? enabledtxt
-                                      : deaible,
-                                  size: 20,
-                                ),
-                                hintText: 'Email',
-                                hintStyle: TextStyle(
-                                    color: selected == FormData.Email
-                                        ? enabledtxt
-                                        : deaible,
-                                    fontSize: 12),
-                              ),
-                              textAlignVertical: TextAlignVertical.center,
-                              style: TextStyle(
-                                  color: selected == FormData.Email
-                                      ? enabledtxt
-                                      : deaible,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        FadeAnimation(
-                          delay: 1,
-                          child: Container(
-                            width: 300,
-                            height: 40,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12.0),
-                                color: selected == FormData.password
-                                    ? enabled
-                                    : backgroundColor),
-                            padding: const EdgeInsets.all(5.0),
-                            child: TextField(
-                              controller: passwordController,
-                              onTap: () {
-                                setState(() {
-                                  selected = FormData.password;
-                                });
-                              },
-                              decoration: InputDecoration(
-                                  enabledBorder: InputBorder.none,
-                                  border: InputBorder.none,
-                                  prefixIcon: Icon(
-                                    Icons.lock_open_outlined,
-                                    color: selected == FormData.password
-                                        ? enabledtxt
-                                        : deaible,
-                                    size: 20,
-                                  ),
-                                  suffixIcon: IconButton(
-                                    icon: ispasswordev
-                                        ? Icon(
-                                            Icons.visibility_off,
-                                            color: selected == FormData.password
-                                                ? enabledtxt
-                                                : deaible,
-                                            size: 20,
-                                          )
-                                        : Icon(
-                                            Icons.visibility,
-                                            color: selected == FormData.password
-                                                ? enabledtxt
-                                                : deaible,
-                                            size: 20,
-                                          ),
-                                    onPressed: () => setState(
-                                        () => ispasswordev = !ispasswordev),
-                                  ),
-                                  hintText: 'Password',
-                                  hintStyle: TextStyle(
-                                      color: selected == FormData.password
-                                          ? enabledtxt
-                                          : deaible,
-                                      fontSize: 12)),
-                              obscureText: ispasswordev,
-                              textAlignVertical: TextAlignVertical.center,
-                              style: TextStyle(
-                                  color: selected == FormData.password
-                                      ? enabledtxt
-                                      : deaible,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        FadeAnimation(
-                          delay: 1,
-                          child: Container(
-                            width: 300,
-                            height: 40,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12.0),
-                                color: selected == FormData.ConfirmPassword
-                                    ? enabled
-                                    : backgroundColor),
-                            padding: const EdgeInsets.all(5.0),
-                            child: TextField(
-                              controller: confirmPasswordController,
-                              onTap: () {
-                                setState(() {
-                                  selected = FormData.ConfirmPassword;
-                                });
-                              },
-                              decoration: InputDecoration(
-                                  enabledBorder: InputBorder.none,
-                                  border: InputBorder.none,
-                                  prefixIcon: Icon(
-                                    Icons.lock_open_outlined,
-                                    color: selected == FormData.ConfirmPassword
-                                        ? enabledtxt
-                                        : deaible,
-                                    size: 20,
-                                  ),
-                                  suffixIcon: IconButton(
-                                    icon: ispasswordev
-                                        ? Icon(
-                                            Icons.visibility_off,
-                                            color: selected ==
-                                                    FormData.ConfirmPassword
-                                                ? enabledtxt
-                                                : deaible,
-                                            size: 20,
-                                          )
-                                        : Icon(
-                                            Icons.visibility,
-                                            color: selected ==
-                                                    FormData.ConfirmPassword
-                                                ? enabledtxt
-                                                : deaible,
-                                            size: 20,
-                                          ),
-                                    onPressed: () => setState(
-                                        () => ispasswordev = !ispasswordev),
-                                  ),
-                                  hintText: 'Confirm Password',
-                                  hintStyle: TextStyle(
-                                      color:
-                                          selected == FormData.ConfirmPassword
-                                              ? enabledtxt
-                                              : deaible,
-                                      fontSize: 12)),
-                              obscureText: ispasswordev,
-                              textAlignVertical: TextAlignVertical.center,
-                              style: TextStyle(
-                                  color: selected == FormData.ConfirmPassword
-                                      ? enabledtxt
-                                      : deaible,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 12),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 25,
-                        ),
-                        FadeAnimation(
-                          delay: 1,
-                          child: TextButton(
-                              onPressed: () {},
-                              child: Text(
-                                "Sign Up",
-                                style: pageNormalStyle,
-                              ),
-                              style: TextButton.styleFrom(
-                                  backgroundColor: Color.fromARGB(255, 143, 61, 61).withOpacity(0.9),
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 14.0, horizontal: 80),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(12.0)))),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+        child: TextField(
+          cursorColor: Colors.black,
+          controller: fullNameController,
+          decoration: InputDecoration(
+              hintText: "Full Name",
+              hintStyle: TextStyle(color: Colors.grey),
+              prefixIcon: Icon(
+                Icons.person,
+                color: Colors.black,
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent, width: 1),
+                  borderRadius: BorderRadius.circular(30)),
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent, width: 1),
+                  borderRadius: BorderRadius.circular(30)),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+        ),
+      ),
+    );
+  }
 
-                //End of Center Card
-                //Start of outer card
-                SizedBox(
-                  height: 20,
-                ),
-
-                FadeAnimation(
-                  delay: 1,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                       Text("If you have an account ",
-                          style:pageNormalStyleGrey,),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pop(context);
-                          Navigator.of(context)
-                              .push(MaterialPageRoute(builder: (context) {
-                            return LoginScreen();
-                          }));
-                        },
-                        child: Text("Sing in",
-                            style: pageNormalStyle),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+  Padding passwordCheckField() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          // gradient: const LinearGradient(colors: [
+          //   Color.fromARGB(255, 10, 66, 99),
+          //   // Color.fromARGB(255, 10, 66, 99),
+          //   Color.fromARGB(255, 90, 4, 54),
+          // ]),
+          borderRadius: BorderRadius.circular(30),
+          border: Border.all(
+            color: Colors.black,
+            width: 2,
           ),
+          // gradient: const LinearGradient(colors: [
+          //   Color.fromARGB(255, 10, 66, 99),
+          //   // Color.fromARGB(255, 10, 66, 99),
+          //   Color.fromARGB(255, 90, 4, 54),
+          // ]),
+          // borderRadius: BorderRadius.circular(30),
+        ),
+        child: TextField(
+          cursorColor: Colors.black,
+          controller: passwordChechController,
+          obscureText: true,
+          decoration: InputDecoration(
+              hintText: "Password Again",
+              hintStyle: const TextStyle(color: Colors.grey),
+              prefixIcon: Icon(
+                Icons.lock,
+                color: Colors.black,
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent, width: 1),
+                  borderRadius: BorderRadius.circular(30)),
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent, width: 1),
+                  borderRadius: BorderRadius.circular(30)),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+        ),
+      ),
+    );
+  }
+
+  Padding passwordField() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          // gradient: const LinearGradient(colors: [
+          //   Color.fromARGB(255, 10, 66, 99),
+          //   // Color.fromARGB(255, 10, 66, 99),
+          //   Color.fromARGB(255, 90, 4, 54),
+          // ]),
+          borderRadius: BorderRadius.circular(30),
+          border: Border.all(
+            color: Colors.black,
+            width: 2,
+          ),
+        ),
+        child: TextField(
+          cursorColor: Colors.black,
+          controller: passwordController,
+          obscureText: true,
+          decoration: InputDecoration(
+              hintText: "Password",
+              hintStyle: const TextStyle(color: Colors.grey),
+              prefixIcon: Icon(
+                Icons.lock,
+                color: Colors.black,
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent, width: 1),
+                  borderRadius: BorderRadius.circular(30)),
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent, width: 1),
+                  borderRadius: BorderRadius.circular(30)),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+        ),
+      ),
+    );
+  }
+
+  Padding emailField() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          // gradient: const LinearGradient(colors: [
+          //   Color.fromARGB(255, 10, 66, 99),
+          //   // Color.fromARGB(255, 10, 66, 99),
+          //   Color.fromARGB(255, 90, 4, 54),
+          // ]),
+          borderRadius: BorderRadius.circular(30),
+          border: Border.all(
+            color: Colors.black,
+            width: 2,
+          ),
+        ),
+        child: TextField(
+          cursorColor: Colors.black,
+          controller: emailController,
+          decoration: InputDecoration(
+              hintText: "Email",
+              hintStyle: TextStyle(color: Colors.grey),
+              prefixIcon: Icon(
+                Icons.email,
+                color: Colors.black,
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent, width: 1),
+                  borderRadius: BorderRadius.circular(30)),
+              enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.transparent, width: 1),
+                  borderRadius: BorderRadius.circular(30)),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
         ),
       ),
     );
   }
 }
+
+
+// body: ListView(children: [
+//         Container(
+//           width: w,
+//           height: h * 0.15,
+//           // decoration: const BoxDecoration(
+//           //   image: DecorationImage(
+//           //       image: AssetImage("assets/img/signup.png"), fit: BoxFit.cover),
+//           // ),
+//         ),
+//         const Padding(
+//           padding: EdgeInsets.only(left: 18.0),
+//           child: Text(
+//             'Sign Up',
+//             style: TextStyle(
+//                 color: Colors.black, fontSize: 56, fontWeight: FontWeight.bold),
+//           ),
+//         ),
+//         const Padding(
+//           padding: EdgeInsets.only(left: 18.0),
+//           child: Text('Sign up your account'),
+//         ),
+//         Container(
+//           margin: const EdgeInsets.only(left: 20, right: 20),
+//           width: w,
+//           child: Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               const SizedBox(
+//                 height: 50,
+//               ),
+//               Container(
+//                 decoration: BoxDecoration(
+//                     color: Colors.white,
+//                     borderRadius: BorderRadius.circular(30),
+//                     boxShadow: [
+//                       BoxShadow(
+//                           blurRadius: 10,
+//                           offset: const Offset(1, 1),
+//                           color: Colors.grey.withOpacity(0.2),
+//                           spreadRadius: 7)
+//                     ]),
+//                 child: TextField(
+//                   controller: emailController,
+//                   decoration: InputDecoration(
+//                       hintText: "Email",
+//                       prefixIcon: const Icon(
+//                         Icons.email,
+//                         color: Colors.deepOrangeAccent,
+//                       ),
+//                       focusedBorder: OutlineInputBorder(
+//                           borderSide:
+//                               const BorderSide(color: Colors.white, width: 1),
+//                           borderRadius: BorderRadius.circular(30)),
+//                       enabledBorder: OutlineInputBorder(
+//                           borderSide:
+//                               const BorderSide(color: Colors.white, width: 1),
+//                           borderRadius: BorderRadius.circular(30)),
+//                       border: OutlineInputBorder(
+//                           borderRadius: BorderRadius.circular(30))),
+//                 ),
+//               ),
+//               const SizedBox(
+//                 height: 20,
+//               ),
+//               Container(
+//                 decoration: BoxDecoration(
+//                     color: Colors.white,
+//                     borderRadius: BorderRadius.circular(30),
+//                     boxShadow: [
+//                       BoxShadow(
+//                           blurRadius: 10,
+//                           offset: const Offset(1, 1),
+//                           color: Colors.grey.withOpacity(0.2),
+//                           spreadRadius: 7)
+//                     ]),
+//                 child: TextField(
+//                   controller: passwordController,
+//                   obscureText: true,
+//                   decoration: InputDecoration(
+//                       hintText: "Password",
+//                       prefixIcon: const Icon(
+//                         Icons.password_outlined,
+//                         color: Colors.deepOrangeAccent,
+//                       ),
+//                       focusedBorder: OutlineInputBorder(
+//                           borderSide:
+//                               const BorderSide(color: Colors.white, width: 1),
+//                           borderRadius: BorderRadius.circular(30)),
+//                       enabledBorder: OutlineInputBorder(
+//                           borderSide:
+//                               const BorderSide(color: Colors.white, width: 1),
+//                           borderRadius: BorderRadius.circular(30)),
+//                       border: OutlineInputBorder(
+//                           borderRadius: BorderRadius.circular(30))),
+//                 ),
+//               ),
+//               const SizedBox(
+//                 height: 70,
+//               ),
+//               // Row(
+//               //   children: [
+//               //     Expanded(child: Container()),
+//               //     const Text('Forgot your password ?')
+//               //   ],
+//               // )
+//             ],
+//           ),
+//         ),
+//         GestureDetector(
+//           onTap: () {
+//             AuthController.instance.register(
+//                 emailController.text.trim(), passwordController.text.trim());
+//           },
+//           child: Padding(
+//             padding: const EdgeInsets.symmetric(horizontal: 35),
+//             child: Container(
+//               width: w * 0.5,
+//               height: h * 0.08,
+//               decoration: BoxDecoration(
+//                   borderRadius: BorderRadius.circular(30),
+//                   color: Colors.purpleAccent
+//                   // image: const DecorationImage(
+//                   //     image: AssetImage("assets/img/loginbtn.png"),
+//                   //     fit: BoxFit.cover),
+//                   ),
+//               child: const Center(
+//                 child: Text(
+//                   "Sign up",
+//                   style: TextStyle(
+//                       fontSize: 36,
+//                       fontWeight: FontWeight.bold,
+//                       color: Colors.white),
+//                 ),
+//               ),
+//             ),
+//           ),
+//         ),
+//         SizedBox(
+//           height: 10,
+//         ),
+//         Center(
+//           child: RichText(
+//             text: TextSpan(
+//                 text: "Already have an account ",
+//                 recognizer: TapGestureRecognizer()..onTap = () => Get.back(),
+//                 style: TextStyle(color: Colors.grey[500], fontSize: 20),
+//                 children: [
+//                   TextSpan(
+//                       recognizer: TapGestureRecognizer()
+//                         ..onTap = () => Get.to(() => LoginPage()),
+//                       text: "Login",
+//                       style: TextStyle(
+//                           color: Colors.black,
+//                           fontSize: 20,
+//                           fontWeight: FontWeight.bold))
+//                 ]),
+//           ),
+//         ),
+//         SizedBox(height: h * 0.08),
+//       ]),
