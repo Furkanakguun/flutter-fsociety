@@ -38,12 +38,50 @@ class _ProfilePageState extends State<ProfilePage> {
                   style: pageNormalStyleGreyBigger,
                 ),
               ),
+
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 70, vertical: 5),
                 child: Divider(
                   height: 7,
                   color: Colors.black,
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+                child: Container(
+                  width: w,
+                  height: 110,
+                  decoration: BoxDecoration(color: Colors.transparent),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextButton.icon(
+                          icon: const Icon(
+                            FontAwesomeIcons.instagram,
+                            size: 24,
+                            color: Colors.black,
+                          ),
+                          label: Text(
+                            "furkanakguun",
+                            style: pageNormalStyleBlack,
+                          ),
+                          onPressed: () {},
+                        ),
+                        TextButton.icon(
+                          icon: const Icon(
+                            FontAwesomeIcons.twitter,
+                            size: 24,
+                            color: Colors.black,
+                          ),
+                          label: Text(
+                            "fakgn",
+                            style: pageNormalStyleBlack,
+                          ),
+                          onPressed: () {},
+                        ),
+                      ]),
                 ),
               ),
               profileButtons(w),
@@ -67,15 +105,41 @@ class _ProfilePageState extends State<ProfilePage> {
                       Radius.circular(40),
                     ),
                   ),
-                  child: Center(child: Text("06 FAK 98", style: pageNormalStyleGreyBigger,)),
+                  child: Center(
+                      child: Text(
+                    "06 FAK 98",
+                    style: pageNormalStyleGreyBigger,
+                  )),
                 ),
-              )
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+                child: Container(
+                  width: w,
+                  height: 110,
+                  decoration: BoxDecoration(color: Colors.transparent),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        AutoSizeText(
+                          "Porsche",
+                          style: pageNormalStyleBlack,
+                          maxLines: 1,
+                        ),
+                        AutoSizeText(
+                          "911 GT3 RS",
+                          style: pageNormalStyleBlack,
+                          maxLines: 1,
+                        )
+                      ]),
+                ),
+              ),
             ],
           ),
         ));
   }
 
-  
   Container profileButtons(double w) {
     return Container(
       width: w,
@@ -93,7 +157,7 @@ class _ProfilePageState extends State<ProfilePage> {
           child: Ink(
             decoration: BoxDecoration(
                 gradient: const LinearGradient(colors: [
-                   Color.fromARGB(255, 31, 31, 31),
+                  Color.fromARGB(255, 31, 31, 31),
                   Color.fromARGB(255, 0, 0, 0)
                 ]),
                 borderRadius: BorderRadius.circular(20)),
@@ -299,7 +363,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: Text('Log Out', style: pageButtonStyle),
                       ),
                       onTap: () {
-                         Get.to(LoginScreen());
+                        Get.to(LoginScreen());
                       },
                     ),
                   ),
