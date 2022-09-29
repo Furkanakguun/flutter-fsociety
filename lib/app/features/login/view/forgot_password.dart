@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:runaway/app/classes/fadeanimation.dart';
 import 'package:runaway/app/classes/hex_color.dart';
-import 'package:runaway/app/features/login/view/login.dart';
+import 'package:runaway/app/features/login/view/welcome_page.dart';
 import 'package:runaway/app/features/login/view/pin_code.dart';
 
 enum FormData { Email }

@@ -39,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(color: Color.fromRGBO(216, 250, 8, 1)),
+        decoration: BoxDecoration(color: Color.fromRGBO(211,255,82, 1)),
         child: Center(
           child: SingleChildScrollView(
             child: Column(
@@ -140,11 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 maxLines: 1, style: pageNormalStyleGreySmall),
                             GestureDetector(
                               onTap: () {
-                                Navigator.pop(context);
-                                Navigator.of(context)
-                                    .push(MaterialPageRoute(builder: (context) {
-                                  return SignUpPage();
-                                }));
+                              
                               },
                               child: AutoSizeText("terms and conditions",
                                   maxLines: 1,
@@ -167,11 +163,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 maxLines: 1, style: pageNormalStyleGreySmall),
                             GestureDetector(
                               onTap: () {
-                                Navigator.pop(context);
-                                Navigator.of(context)
-                                    .push(MaterialPageRoute(builder: (context) {
-                                  return SignUpPage();
-                                }));
                               },
                               child: AutoSizeText("privacy policy",
                                   maxLines: 1,

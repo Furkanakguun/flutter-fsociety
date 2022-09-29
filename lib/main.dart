@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'app/features/login/view/login.dart';
+import 'app/features/login/view/welcome_page.dart';
 
 
 void main() {
@@ -21,9 +21,12 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Runaway',
       theme: ThemeData(
+          canvasColor: Colors.transparent,
         primarySwatch: Colors.red,
         backgroundColor: Colors.grey
       ),
+      debugShowCheckedModeBanner: false,
+
       home:LoginScreen(),
     );
   }

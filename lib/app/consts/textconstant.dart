@@ -37,10 +37,15 @@ TextStyle pageNormalStyleBlack = GoogleFonts.secularOne(
   textStyle: TextStyle(
       color: Color.fromARGB(255, 0, 0, 0),
       fontWeight: FontWeight.w300,
-      fontSize: 14),
+      fontSize: 16),
 );
-
-
+//Color.fromRGBO(211,255,82, 1)
+TextStyle pageNormalStyleYellowGreen = GoogleFonts.secularOne(
+  textStyle: TextStyle(
+      color: Color.fromRGBO(211,255,82, 1),
+      fontWeight: FontWeight.w300,
+      fontSize: 16),
+);
 TextStyle pageButtonStyle = GoogleFonts.staatliches(
   textStyle: TextStyle(
       color: Color.fromARGB(255, 230, 229, 225),
@@ -61,6 +66,14 @@ TextStyle pageNormalStyleGreyBig = GoogleFonts.secularOne(
       fontWeight: FontWeight.w300,
       fontSize: 18),
 );
+
+TextStyle pageNormalStyleGreyBigger = GoogleFonts.secularOne(
+  textStyle: TextStyle(
+      color: Color.fromARGB(255, 7, 7, 7),
+      fontWeight: FontWeight.w300,
+      fontSize: 24),
+);
+
 
 TextStyle pageNormalStyleGrey = GoogleFonts.secularOne(
   textStyle: TextStyle(

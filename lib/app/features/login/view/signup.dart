@@ -63,7 +63,7 @@ class _SignUpPageState extends State<SignUpPage> {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Color.fromRGBO(216, 250, 8, 1),
+      backgroundColor: Color.fromRGBO(211,255,82, 1),
       // appBar: AppBar(
       //   backgroundColor: Colors.black,
       // ),
@@ -72,7 +72,16 @@ class _SignUpPageState extends State<SignUpPage> {
         child: Container(
             margin: EdgeInsets.all(12),
             child: ListView(children: [
-              Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Column(children: [
+                Row(
+                  children: [
+                    IconButton(
+                        onPressed: (() {
+                          Get.back();
+                        }),
+                        icon: Icon(FontAwesomeIcons.arrowLeft))
+                  ],
+                ),
                 SizedBox(
                   height: 30,
                 ),
@@ -94,8 +103,11 @@ class _SignUpPageState extends State<SignUpPage> {
                 birthDateField(),
                 // instagramField(),
                 CheckboxListTile(
+                  checkColor: Colors.black,
                   value: false,
                   onChanged: null,
+                  activeColor: Colors.black,
+                  selectedTileColor: Colors.black,
                   title: AutoSizeText(
                     "I agree the Terms Of Policy of terms ı accept every line oc policy agreement about bla bla paper and everytrhin they wanted to be",
                     maxLines: 3,
@@ -189,16 +201,16 @@ class _SignUpPageState extends State<SignUpPage> {
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
-                    // gradient: const LinearGradient(colors: [
-                    //   Color.fromARGB(255, 10, 66, 99),
-                    //   // Color.fromARGB(255, 10, 66, 99),
-                    //   Color.fromARGB(255, 90, 4, 54),
-                    // ]),
-                    borderRadius: BorderRadius.circular(30),
-                    border: Border.all(
-                      color: Colors.black,
-                      width: 2,
-                    ),
+          // gradient: const LinearGradient(colors: [
+          //   Color.fromARGB(255, 10, 66, 99),
+          //   // Color.fromARGB(255, 10, 66, 99),
+          //   Color.fromARGB(255, 90, 4, 54),
+          // ]),
+          borderRadius: BorderRadius.circular(30),
+          border: Border.all(
+            color: Colors.black,
+            width: 2,
+          ),
         ),
         child: TextField(
           onTap: () {
