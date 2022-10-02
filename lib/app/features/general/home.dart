@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:runaway/app/features/feed/view/feed.dart';
+import 'package:runaway/app/features/feed/view/feedMap.dart';
 import 'package:runaway/app/features/profile/view/profile.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,8 +18,9 @@ class HomePage extends StatelessWidget {
       screens: _buildScreens(),
       items: _navBarsItems(),
       confineInSafeArea: true,
+
       backgroundColor:
-          Color.fromARGB(255, 0, 0, 0), // Default is Colors.white.
+          Color.fromRGBO(211, 255, 82, 1), // Default is Colors.white.
       handleAndroidBackButtonPress: true, // Default is true.
       resizeToAvoidBottomInset:
           true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
@@ -28,6 +30,12 @@ class HomePage extends StatelessWidget {
       decoration: NavBarDecoration(
         borderRadius: BorderRadius.circular(1.0),
         colorBehindNavBar: Colors.white,
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+              color: Colors.black54,
+              blurRadius: 15.0,
+              offset: Offset(0.0, 0.75))
+        ],
       ),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
@@ -42,7 +50,7 @@ class HomePage extends StatelessWidget {
         curve: Curves.ease,
         duration: Duration(milliseconds: 200),
       ),
-      
+
       navBarStyle:
           NavBarStyle.style12, // Choose the nav bar style with this property.
     );
@@ -50,22 +58,31 @@ class HomePage extends StatelessWidget {
 }
 
 List<Widget> _buildScreens() {
-  return [FeedPage(), ProfilePage()];
+  return [FeedMapPage(), FeedPage(), ProfilePage()];
 }
 
 List<PersistentBottomNavBarItem> _navBarsItems() {
   return [
     PersistentBottomNavBarItem(
-      icon: Icon(FontAwesomeIcons.map),
+      icon: Icon(
+        FontAwesomeIcons.map,
+        size: 32,
+      ),
       title: ("Map"),
-      activeColorPrimary: Color.fromARGB(255, 255, 255, 255),
-      inactiveColorPrimary: CupertinoColors.systemGrey,
+      activeColorPrimary: Color.fromARGB(255, 0, 0, 0),
+      inactiveColorPrimary: Colors.grey[600],
     ),
     PersistentBottomNavBarItem(
-      icon: Icon(CupertinoIcons.profile_circled),
+      icon: Icon(FontAwesomeIcons.magnifyingGlass,),
       title: ("Profile"),
-      activeColorPrimary: Color.fromARGB(255, 255, 255, 255),
-      inactiveColorPrimary: CupertinoColors.systemGrey,
+      activeColorPrimary: Color.fromARGB(255, 0, 0, 0),
+      inactiveColorPrimary: Colors.grey[600],
+    ),
+    PersistentBottomNavBarItem(
+      icon: Icon(CupertinoIcons.profile_circled, size: 32),
+      title: ("Profile"),
+      activeColorPrimary: Color.fromARGB(255, 0, 0, 0),
+      inactiveColorPrimary: Colors.grey[600],
     ),
   ];
 }

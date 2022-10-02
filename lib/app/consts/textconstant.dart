@@ -25,6 +25,15 @@ TextStyle subheaderStyle = GoogleFonts.staatliches(
       ),
 );
 
+TextStyle subheaderStyleSmall = GoogleFonts.staatliches(
+  textStyle: TextStyle(
+      color: Color.fromARGB(255, 0, 0, 0),
+      fontWeight: FontWeight.bold,
+      fontSize: 18,
+      ),
+);
+
+
 
 TextStyle pageNormalStyle = GoogleFonts.secularOne(
   textStyle: TextStyle(

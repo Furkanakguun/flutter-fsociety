@@ -29,7 +29,7 @@ class _ProfilePageState extends State<ProfilePage> {
           controller: _scrollViewController,
           child: Column(
             children: [
-              //SizedBox(height: 30),
+              SizedBox(height: 10),
               profilePageHeader(w),
               profileImage(w, h),
               Center(
@@ -38,12 +38,11 @@ class _ProfilePageState extends State<ProfilePage> {
                   style: pageNormalStyleGreyBigger,
                 ),
               ),
-
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 70, vertical: 5),
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
                 child: Divider(
-                  height: 7,
+                  height: 10,
                   color: Colors.black,
                 ),
               ),
@@ -52,7 +51,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
                 child: Container(
                   width: w,
-                  height: 110,
+                  height: 100,
                   decoration: BoxDecoration(color: Colors.transparent),
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,6 +84,14 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               profileButtons(w),
+               Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+                child: Divider(
+                  height: 10,
+                  color: Colors.black,
+                ),
+              ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
@@ -95,8 +102,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     color: Color.fromRGBO(211, 255, 82, 1),
                     image: DecorationImage(
                       fit: BoxFit.contain,
-                      colorFilter: ColorFilter.mode(
-                          HexColor("#fff").withOpacity(0.6), BlendMode.dstATop),
+                      // colorFilter: ColorFilter.mode(
+                      //     HexColor("#fff").withOpacity(0.6), BlendMode.dstATop),
                       image: AssetImage(
                         'assets/images/plate.png',
                       ),
@@ -124,7 +131,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       children: [
                         AutoSizeText(
                           "Porsche",
-                          style: pageNormalStyleBlack,
+                          style: subheaderStyleSmall,
                           maxLines: 1,
                         ),
                         AutoSizeText(
@@ -135,6 +142,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ]),
                 ),
               ),
+            
             ],
           ),
         ));
@@ -143,7 +151,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Container profileButtons(double w) {
     return Container(
       width: w,
-      height: 70,
+      height: 60,
       color: Colors.transparent,
       child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
         ElevatedButton(
@@ -156,10 +164,11 @@ class _ProfilePageState extends State<ProfilePage> {
                   borderRadius: BorderRadius.circular(20))),
           child: Ink(
             decoration: BoxDecoration(
-                gradient: const LinearGradient(colors: [
-                  Color.fromARGB(255, 31, 31, 31),
-                  Color.fromARGB(255, 0, 0, 0)
-                ]),
+                color: Colors.white,
+                border: Border.all(
+                  color: Colors.black,
+                  width: 2,
+                ),
                 borderRadius: BorderRadius.circular(20)),
             child: Container(
               width: w / 3,
@@ -167,7 +176,7 @@ class _ProfilePageState extends State<ProfilePage> {
               alignment: Alignment.center,
               child: AutoSizeText(
                 'Edit',
-                style: pageNormalStyle,
+                style: subheaderStyleSmall,
               ),
             ),
           ),
@@ -185,10 +194,11 @@ class _ProfilePageState extends State<ProfilePage> {
                   borderRadius: BorderRadius.circular(20))),
           child: Ink(
             decoration: BoxDecoration(
-                gradient: const LinearGradient(colors: [
-                  Color.fromARGB(255, 31, 31, 31),
-                  Color.fromARGB(255, 0, 0, 0)
-                ]),
+                color: Colors.white,
+                border: Border.all(
+                  color: Colors.black,
+                  width: 2,
+                ),
                 borderRadius: BorderRadius.circular(20)),
             child: Container(
               width: w / 3,
@@ -196,7 +206,7 @@ class _ProfilePageState extends State<ProfilePage> {
               alignment: Alignment.center,
               child: AutoSizeText(
                 'I Need Help',
-                style: pageNormalStyle,
+                style: subheaderStyleSmall,
               ),
             ),
           ),
@@ -257,7 +267,7 @@ class _ProfilePageState extends State<ProfilePage> {
       height: 70,
       color: Colors.transparent,
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: const EdgeInsets.only(right:20.0 , top: 25),
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Text(''),
