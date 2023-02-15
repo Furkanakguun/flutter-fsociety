@@ -84,65 +84,6 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               profileButtons(w),
-               Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
-                child: Divider(
-                  height: 10,
-                  color: Colors.black,
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
-                child: Container(
-                  width: w,
-                  height: 120,
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(211, 255, 82, 1),
-                    image: DecorationImage(
-                      fit: BoxFit.contain,
-                      // colorFilter: ColorFilter.mode(
-                      //     HexColor("#fff").withOpacity(0.6), BlendMode.dstATop),
-                      image: AssetImage(
-                        'assets/images/plate.png',
-                      ),
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(40),
-                    ),
-                  ),
-                  child: Center(
-                      child: Text(
-                    "06 FAK 98",
-                    style: pageNormalStyleGreyBigger,
-                  )),
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 50, vertical: 5),
-                child: Container(
-                  width: w,
-                  height: 110,
-                  decoration: BoxDecoration(color: Colors.transparent),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        AutoSizeText(
-                          "Porsche",
-                          style: subheaderStyleSmall,
-                          maxLines: 1,
-                        ),
-                        AutoSizeText(
-                          "911 GT3 RS",
-                          style: pageNormalStyleBlack,
-                          maxLines: 1,
-                        )
-                      ]),
-                ),
-              ),
-            
             ],
           ),
         ));
@@ -267,7 +208,7 @@ class _ProfilePageState extends State<ProfilePage> {
       height: 70,
       color: Colors.transparent,
       child: Padding(
-        padding: const EdgeInsets.only(right:20.0 , top: 25),
+        padding: const EdgeInsets.only(right: 20.0, top: 25),
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Text(''),

@@ -30,8 +30,8 @@ class _LoginScreenState extends State<LoginScreen> {
   bool ispasswordev = true;
   FormData? selected;
 
-  TextEditingController emailController = new TextEditingController();
-  TextEditingController passwordController = new TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +48,19 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: 50),
                 FadeAnimation(
                   delay: 1,
-                  child: Text(
-                    "Run\n  away\nCar",
-                    style: pageTitleStyle2,
-                    textAlign: TextAlign.center,
+                  child: Column(
+                    children: [
+                      Text(
+                        "FSociety",
+                        style: pageTitleStyle2,
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        "Flutter",
+                        style: pageTitleStyle,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
                 ),
                 SizedBox(
@@ -60,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 FadeAnimation(
                   delay: 1,
                   child: Text(
-                    "Ready for ride?",
+                    "A Social Network",
                     style: pageNormalStyleGrey,
                   ),
                 ),

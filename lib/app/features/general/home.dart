@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
       confineInSafeArea: true,
 
       backgroundColor:
-          Color.fromRGBO(211, 255, 82, 1), // Default is Colors.white.
+          Theme.of(context).primaryColor, // Default is Colors.white.
       handleAndroidBackButtonPress: true, // Default is true.
       resizeToAvoidBottomInset:
           true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
@@ -30,12 +30,12 @@ class HomePage extends StatelessWidget {
       decoration: NavBarDecoration(
         borderRadius: BorderRadius.circular(1.0),
         colorBehindNavBar: Colors.white,
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-              color: Colors.black54,
-              blurRadius: 15.0,
-              offset: Offset(0.0, 0.75))
-        ],
+        // boxShadow: <BoxShadow>[
+        //   BoxShadow(
+        //       color: Colors.black54,
+        //       blurRadius: 15.0,
+        //       offset: Offset(0.0, 0.75))
+        // ],
       ),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
@@ -58,23 +58,25 @@ class HomePage extends StatelessWidget {
 }
 
 List<Widget> _buildScreens() {
-  return [FeedMapPage(), FeedPage(), ProfilePage()];
+  return [FeedPage(), FeedMapPage(), ProfilePage()];
 }
 
 List<PersistentBottomNavBarItem> _navBarsItems() {
   return [
     PersistentBottomNavBarItem(
       icon: Icon(
-        FontAwesomeIcons.map,
-        size: 32,
+        FontAwesomeIcons.house,
       ),
-      title: ("Map"),
+      title: ("Feed"),
       activeColorPrimary: Color.fromARGB(255, 0, 0, 0),
       inactiveColorPrimary: Colors.grey[600],
     ),
     PersistentBottomNavBarItem(
-      icon: Icon(FontAwesomeIcons.magnifyingGlass,),
-      title: ("Profile"),
+      icon: Icon(
+        FontAwesomeIcons.map,
+        size: 32,
+      ),
+      title: ("FeedMap"),
       activeColorPrimary: Color.fromARGB(255, 0, 0, 0),
       inactiveColorPrimary: Colors.grey[600],
     ),

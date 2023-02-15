@@ -6,7 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../../../consts/textconstant.dart';
-import '../model/feed_user_model.dart';
+import '../model/tweet_model.dart';
 
 class FeedMapPage extends StatefulWidget {
   FeedMapPage({Key? key}) : super(key: key);
@@ -38,7 +38,7 @@ class _FeedMapPageState extends State<FeedMapPage> {
             bottom: PreferredSize(
               preferredSize: const Size.fromHeight(30.0),
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color.fromRGBO(211, 255, 82, 1),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(40),
@@ -88,54 +88,6 @@ class _FeedMapPageState extends State<FeedMapPage> {
                       ),
                     ),
                   ),
-                  Positioned(
-                    top: 40,
-                    right: 20,
-                    child: Container(
-                      width: 185,
-                      height: 65,
-                      decoration: BoxDecoration(
-                          color: Color.fromARGB(177, 255, 255, 254),
-                          // gradient: const LinearGradient(colors: [
-                          //  Color.fromRGBO(211,255,82, 1)
-                          // ]),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Row(
-                          children: [
-                            GestureDetector(
-                              onTap: () {},
-                              child: Container(
-                                width: 55,
-                                height: 55,
-                                decoration: BoxDecoration(
-                                  color: Colors.black,
-                                  border: Border.all(
-                                      color: Color.fromRGBO(216, 250, 8, 0.7),
-                                      width: 3),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(15.0)),
-                                ),
-                                child: Center(
-                                    child: Icon(
-                                  FontAwesomeIcons.car,
-                                  color: Colors.white,
-                                )),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            AutoSizeText(
-                              "Welcome Back \n 06 FAK 98",
-                              style: pageNormalStyleBlack,
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
                 ]),
                 // child: GoogleMap(
                 //     zoomGesturesEnabled: true,
@@ -167,7 +119,7 @@ class _FeedMapPageState extends State<FeedMapPage> {
                 child: Column(
                   children: [
                     Text(
-                      'Start Exploring',
+                      'Welcome',
                       style: pageNormalStyleBlack,
                     ),
                   ],
