@@ -90,7 +90,7 @@ class _SignInPageState extends State<SignInPage> {
     return Scaffold(
       key: _scaffoldKey,
       resizeToAvoidBottomInset: true,
-      backgroundColor: Color.fromRGBO(211,255,82, 1),
+      backgroundColor: Color.fromRGBO(211, 255, 82, 1),
       //  appBar: AppBar(backgroundColor: Color.fromRGBO(211,255,82, 1)),
       body: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),

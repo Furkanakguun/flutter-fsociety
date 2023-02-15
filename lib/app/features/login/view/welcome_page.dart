@@ -39,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(color: Color.fromRGBO(211,255,82, 1)),
+        decoration: BoxDecoration(color: Color.fromRGBO(211, 255, 82, 1)),
         child: Center(
           child: SingleChildScrollView(
             child: Column(
@@ -129,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 FadeAnimation(
                   delay: 1,
                   child: Container(
-                    width: w / 2 + 150,
+                    width: w / 2 + 170,
                     child: Column(
                       children: [
                         Row(
@@ -139,9 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             AutoSizeText("By registering, you accept the",
                                 maxLines: 1, style: pageNormalStyleGreySmall),
                             GestureDetector(
-                              onTap: () {
-                              
-                              },
+                              onTap: () {},
                               child: AutoSizeText("terms and conditions",
                                   maxLines: 1,
                                   style: TextStyle(
@@ -162,8 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             AutoSizeText("and the ",
                                 maxLines: 1, style: pageNormalStyleGreySmall),
                             GestureDetector(
-                              onTap: () {
-                              },
+                              onTap: () {},
                               child: AutoSizeText("privacy policy",
                                   maxLines: 1,
                                   style: TextStyle(

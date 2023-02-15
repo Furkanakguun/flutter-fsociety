@@ -167,71 +167,8 @@ class _FeedMapPageState extends State<FeedMapPage> {
                 child: Column(
                   children: [
                     Text(
-                      'You are close with',
+                      'Start Exploring',
                       style: pageNormalStyleBlack,
-                    ),
-                    Container(
-                      width: size.width,
-                      height: 100,
-                      decoration: BoxDecoration(
-                          color: Colors.white24.withOpacity(0.1),
-                          // gradient: const LinearGradient(colors: [
-                          //  Color.fromRGBO(211,255,82, 1)
-                          // ]),
-                          borderRadius: BorderRadius.circular(10)),
-                      child:
-                          ListView(scrollDirection: Axis.horizontal, children: [
-                        FeedUserModel(
-                          carPlate: "06 FAK 98",
-                          userPhotoUrl:
-                              'https://firebasestorage.googleapis.com/v0/b/homeparty-f3290.appspot.com/o/user_e441Dm6jr8O3tcixUuEFTG5jJcp2.jpg?alt=media&token=b3d68f35-b1aa-4ef3-b25c-64722a38db38.jpg',
-                        ),
-                        FeedUserModel(
-                          carPlate: "06 EB 7776",
-                          userPhotoUrl:
-                              'https://firebasestorage.googleapis.com/v0/b/homeparty-f3290.appspot.com/o/user_7sGnxz8TF4YfjsUzJDysDs1C0gD2.jpg?alt=media&token=18c421d5-4019-4327-aad3-962d0bca8842.jpg',
-                        ),
-                        FeedUserModel(
-                          carPlate: "06 AL 5678",
-                          userPhotoUrl:
-                              'https://firebasestorage.googleapis.com/v0/b/homeparty-f3290.appspot.com/o/user_8woybaKObGeYVERNsMKSOv59xBh2.jpg?alt=media&token=b178847c-94da-4603-a321-d41bf2802343.jpg',
-                        ),
-                        FeedUserModel(
-                          carPlate: "06 CMN 92",
-                          userPhotoUrl:
-                              'https://firebasestorage.googleapis.com/v0/b/homeparty-f3290.appspot.com/o/user_F1UHweWUsBhDf1F5UNsymT2TPI82.jpg?alt=media&token=37de0643-aa14-4f08-af98-ca3555548d4c.jpg',
-                        ),
-                        FeedUserModel(
-                          carPlate: "06 AYT 789",
-                          userPhotoUrl:
-                              'https://firebasestorage.googleapis.com/v0/b/homeparty-f3290.appspot.com/o/user_791r4pQlWGWv6KHI1McLkE1vJtO2.jpg?alt=media&token=aa0b4894-4a05-45e4-a43b-b90c50dfb25f.jpg',
-                        ),
-                        FeedUserModel(
-                          carPlate: "06 FAK 98",
-                          userPhotoUrl:
-                              'https://firebasestorage.googleapis.com/v0/b/homeparty-f3290.appspot.com/o/user_e441Dm6jr8O3tcixUuEFTG5jJcp2.jpg?alt=media&token=b3d68f35-b1aa-4ef3-b25c-64722a38db38.jpg',
-                        ),
-                        FeedUserModel(
-                          carPlate: "06 EB 7776",
-                          userPhotoUrl:
-                              'https://firebasestorage.googleapis.com/v0/b/homeparty-f3290.appspot.com/o/user_7sGnxz8TF4YfjsUzJDysDs1C0gD2.jpg?alt=media&token=18c421d5-4019-4327-aad3-962d0bca8842.jpg',
-                        ),
-                        FeedUserModel(
-                          carPlate: "06 AL 5678",
-                          userPhotoUrl:
-                              'https://firebasestorage.googleapis.com/v0/b/homeparty-f3290.appspot.com/o/user_8woybaKObGeYVERNsMKSOv59xBh2.jpg?alt=media&token=b178847c-94da-4603-a321-d41bf2802343.jpg',
-                        ),
-                        FeedUserModel(
-                          carPlate: "06 CMN 92",
-                          userPhotoUrl:
-                              'https://firebasestorage.googleapis.com/v0/b/homeparty-f3290.appspot.com/o/user_F1UHweWUsBhDf1F5UNsymT2TPI82.jpg?alt=media&token=37de0643-aa14-4f08-af98-ca3555548d4c.jpg',
-                        ),
-                        FeedUserModel(
-                          carPlate: "06 AYT 789",
-                          userPhotoUrl:
-                              'https://firebasestorage.googleapis.com/v0/b/homeparty-f3290.appspot.com/o/user_791r4pQlWGWv6KHI1McLkE1vJtO2.jpg?alt=media&token=aa0b4894-4a05-45e4-a43b-b90c50dfb25f.jpg',
-                        ),
-                      ]),
                     ),
                   ],
                 ),
