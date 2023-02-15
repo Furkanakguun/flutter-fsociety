@@ -97,11 +97,11 @@ class _FTweetState extends State<FTweet> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      outlinedButtonPostBlue("Katılıyorum", () {}),
+                      outlinedButtonPostBlue("Agreed", () {}),
                       const SizedBox(
                         width: 15,
                       ),
-                      outlinedButtonPostBlue("Katılmıyorum", () {}),
+                      outlinedButtonPostBlue("Not Agreed", () {}),
                     ],
                   ),
                 )
