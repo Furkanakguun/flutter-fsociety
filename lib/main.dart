@@ -18,9 +18,10 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitDown,
     ]);
     return GetMaterialApp(
-      title: 'Runaway',
+      title: 'FSociety Social Network',
       theme: ThemeData(
         primaryColor: Color.fromRGBO(211, 255, 82, 1),
+        primaryColorDark: Color.fromRGBO(89, 108, 31, 1),
         canvasColor: Colors.transparent,
       ),
       debugShowCheckedModeBanner: false,

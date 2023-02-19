@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:runaway/app/consts/textconstant.dart';
 import 'package:runaway/app/features/general/home.dart';
+import 'package:runaway/app/features/login/view/forgot_password.dart';
 import 'package:runaway/app/features/login/view/signup.dart';
 
 class SignInPage extends StatefulWidget {
@@ -208,7 +209,8 @@ class _SignInPageState extends State<SignInPage> {
                         children: [
                           TextSpan(
                               recognizer: TapGestureRecognizer()
-                                ..onTap = () => Get.to(() => SignUpPage()),
+                                ..onTap =
+                                    () => Get.to(() => ForgotPasswordScreen()),
                               text: " Get Help",
                               style: pageNormalStyleGreyBig)
                         ]),

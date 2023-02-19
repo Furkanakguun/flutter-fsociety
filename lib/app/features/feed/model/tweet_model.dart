@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-
 import '../../../consts/textconstant.dart';
 import '../../../widgets/buttonWidgets.dart';
 
 class FTweet extends StatefulWidget {
   final String postId;
-  final bool imagePost;
+  final bool isImageTweet;
+  final String title;
+  final String subtitle;
+  final String content;
   final bool questionPost;
   const FTweet({
     super.key,
     required this.postId,
-    required this.imagePost,
+    required this.isImageTweet,
     required this.questionPost,
+    required this.title,
+    required this.subtitle,
+    required this.content,
   });
 
   @override
@@ -44,7 +47,7 @@ class _FTweetState extends State<FTweet> {
       padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 5),
       child: Container(
         width: queryData.size.width,
-        height: widget.imagePost || widget.questionPost ? 260 : 200,
+        height: widget.isImageTweet || widget.questionPost ? 260 : 200,
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(

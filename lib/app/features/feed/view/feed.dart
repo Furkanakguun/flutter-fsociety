@@ -52,7 +52,21 @@ class _FeedPageState extends State<FeedPage> {
                   'Lazy Load Feed',
                   style: subheaderStyleSmall,
                 ),
-                FSocietyLazyLoad()
+                FSocietyLazyLoad(),
+                SizedBox(
+                  height: 20,
+                ),
+                Divider(
+                  height: 20,
+                  color: Colors.black,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  'Staggered Grid View',
+                  style: subheaderStyleSmall,
+                ),
               ],
             )));
   }
