@@ -1,4 +1,4 @@
-package com.example.runaway
+package com.example.fsociety
 
 import io.flutter.embedding.android.FlutterActivity
 

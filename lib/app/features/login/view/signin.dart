@@ -2,10 +2,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:runaway/app/consts/textconstant.dart';
-import 'package:runaway/app/features/general/home.dart';
-import 'package:runaway/app/features/login/view/forgot_password.dart';
-import 'package:runaway/app/features/login/view/signup.dart';
+import 'package:fsociety/app/consts/textconstant.dart';
+import 'package:fsociety/app/features/general/home.dart';
+import 'package:fsociety/app/features/login/view/forgot_password.dart';
+import 'package:fsociety/app/features/login/view/signup.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({Key? key}) : super(key: key);

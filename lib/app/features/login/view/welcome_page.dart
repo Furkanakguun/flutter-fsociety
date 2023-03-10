@@ -4,12 +4,12 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:runaway/app/classes/fadeanimation.dart';
-import 'package:runaway/app/classes/hex_color.dart';
-import 'package:runaway/app/features/general/home.dart';
-import 'package:runaway/app/features/login/view/forgot_password.dart';
-import 'package:runaway/app/features/login/view/signup.dart';
-import 'package:runaway/app/features/login/view/signin.dart';
+import 'package:fsociety/app/classes/fadeanimation.dart';
+import 'package:fsociety/app/classes/hex_color.dart';
+import 'package:fsociety/app/features/general/home.dart';
+import 'package:fsociety/app/features/login/view/forgot_password.dart';
+import 'package:fsociety/app/features/login/view/signup.dart';
+import 'package:fsociety/app/features/login/view/signin.dart';
 import '../../../consts/textconstant.dart';
 
 enum FormData {

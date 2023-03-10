@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:runaway/app/widgets/shadowWidgets.dart';
+import 'package:fsociety/app/widgets/shadowWidgets.dart';
 
 import '../consts/textconstant.dart';
 

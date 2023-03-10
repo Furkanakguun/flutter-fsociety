@@ -4,8 +4,8 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:runaway/app/consts/textconstant.dart';
-import 'package:runaway/app/features/login/view/welcome_page.dart';
+import 'package:fsociety/app/consts/textconstant.dart';
+import 'package:fsociety/app/features/login/view/welcome_page.dart';
 
 import '../../../classes/hex_color.dart';
 

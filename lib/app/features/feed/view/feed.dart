@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:runaway/app/consts/textconstant.dart';
-import 'package:runaway/app/features/feed/lazy_load_list/lazy_load_list_feed.dart';
-import 'package:runaway/app/features/feed/model/tweet_model.dart';
+import 'package:fsociety/app/consts/textconstant.dart';
+import 'package:fsociety/app/features/feed/lazy_load_list/lazy_load_list_feed.dart';
+import 'package:fsociety/app/features/feed/model/tweet_model.dart';
 
 class FeedPage extends StatefulWidget {
   const FeedPage({Key? key}) : super(key: key);

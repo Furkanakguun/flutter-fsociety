@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-import 'package:runaway/app/features/feed/view/feed.dart';
-import 'package:runaway/app/features/feed/view/feedMap.dart';
-import 'package:runaway/app/features/profile/view/profile.dart';
+import 'package:fsociety/app/features/feed/view/feed.dart';
+import 'package:fsociety/app/features/feed/view/feedMap.dart';
+import 'package:fsociety/app/features/profile/view/profile.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
