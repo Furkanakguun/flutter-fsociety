@@ -44,22 +44,22 @@ class _FTweetState extends State<FTweet> {
     MediaQueryData queryData;
     queryData = MediaQuery.of(context);
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5),
       child: Container(
         width: queryData.size.width,
         height: widget.isImageTweet || widget.questionPost ? 260 : 200,
         decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
-            ),
-          ],
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: Colors.grey.withOpacity(0.5),
+          //     spreadRadius: 5,
+          //     blurRadius: 7,
+          //     offset: Offset(0, 3), // changes position of shadow
+          //   ),
+          // ],
           color: Colors.white,
-          borderRadius: BorderRadius.circular(20.0),
-          //border: Border.all(color: Colors.red, width: 0.5),
+          borderRadius: BorderRadius.circular(16.0),
+          border: Border.all(color: Colors.black, width: 0.5),
           // image: const DecorationImage(
           //   image: NetworkImage(
           //       "https://firebasestorage.googleapis.com/v0/b/petapp-f989b.appspot.com/o/cat.jpg?alt=media&token=fc433f7c-a79e-4463-8178-7cdf853f6cd1"),
