@@ -10,6 +10,7 @@ class StaggeredViewList extends StatefulWidget {
   State<StaggeredViewList> createState() => _StaggeredViewListState();
 }
 
+//Mock data with pub dev package
 class _StaggeredViewListState extends State<StaggeredViewList> {
   @override
   Widget build(BuildContext context) {
